@@ -4,7 +4,7 @@
   "description": "education express app",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon ./src/index.js",
+    "start": "nodemon ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +21,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
-    "mongoose": "^6.0.9",
+    "mongoose": "^6.0.9"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.13"
   }
 }
