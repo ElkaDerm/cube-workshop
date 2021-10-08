@@ -4,6 +4,7 @@
   "description": "education express app",
   "main": "index.js",
   "scripts": {
+    "start":"nodemon ./src/index.js"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/ElkaDerm/cubic-workshop/issues"
   },
-  "homepage": "https://github.com/ElkaDerm/cubic-workshop#readme"
+  "homepage": "https://github.com/ElkaDerm/cubic-workshop#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "mongoose": "^6.0.9",
+    "nodemon": "^2.0.13"
+  }
 }
