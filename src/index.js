@@ -1,17 +1,18 @@
 const express=require('express')
-const handlebars= require ('express-handlebars')
-const path=require('path')
+const initHandlebars=require('./config/handlebar.js')
+
 const app= express();
+initHandlebars(app);
 
 // set na papca views da ja tursi v SRC folder:
-app.set('views', path.resolve('./src/views'));
+// app.set('views', path.resolve('./src/views'));
 //  console.log(path.resolve('./src/views'))
 
 
-app.engine('hbs',handlebars({
-    extname:'hbs'
-}))
-app.set('view engine', 'hbs')
+// app.engine('hbs',handlebars({
+//     extname:'hbs'
+// }))
+// app.set('view engine', 'hbs')
 
 
 // app.all('/',(req, res)=>{
