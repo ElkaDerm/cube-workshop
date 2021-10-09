@@ -1,6 +1,8 @@
-const express=require('express')
+const express= require('express')
 const path= require('path')
 const initHandlebars=require('./config/handlebar.js')
+const router=require('./config/router.js')
+const homePage=require('./controllers/homeController.js')
 
 const app= express();
 initHandlebars(app);
@@ -22,9 +24,10 @@ initHandlebars(app);
 // })
 
 app.use(express.static(path.resolve(__dirname,'./public')))
-
-app.all('/', (req,res) =>{
-    res.render('index')
-})
+app.use(router)
+// app.all('/', (req,res) =>{
+//     res.render('index')
+// })
+// app.use (cubicHome)
 
 app.listen(5000, ()=> console.log('Application is running on http://locallhost:5000'))
