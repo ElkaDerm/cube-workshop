@@ -6,6 +6,6 @@ const homePage =(req,res)=>{
     res.render('index')
 }
 
-router.use(homePage);
+router.get('/',homePage);
 
 module.exports=router

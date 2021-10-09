@@ -5,6 +5,6 @@ const aboutPage=(req, res)=>{
     res.render('about')
 }
 
-router.use(aboutPage)
+router.get('/about',aboutPage)
 
 module.exports=router

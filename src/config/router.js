@@ -10,12 +10,12 @@ const detailsPage=require('../controllers/detailsController.js')
 const notFoundPage=require('../controllers/404controller.js')
 
 
-router.get('/', homePage)
-router.get ('/create',cubicHome)
-router.get('/about', aboutPage)
-router.get('/details/:id', detailsPage);
+router.use( homePage)
+router.use (cubicHome)
+router.use(aboutPage)
+router.use( detailsPage);
 
-router.get('*', notFoundPage)
+router.use(notFoundPage)
 
 module.exports=router
 

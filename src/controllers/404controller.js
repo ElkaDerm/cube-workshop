@@ -5,6 +5,6 @@ const notFoundPage=(req,res)=>{
     res.render('404')
 };
 
-router.use(notFoundPage);
+router.get('*',notFoundPage);
 
 module.exports=router

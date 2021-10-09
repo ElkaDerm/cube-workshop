@@ -5,6 +5,6 @@ const detailsPage=(req, res)=>{
     res.render('details')
 }
 
-router.use(detailsPage)
+router.get('/details/:id',detailsPage)
 
 module.exports=router

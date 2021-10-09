@@ -1,12 +1,14 @@
 const express= require('express')
 const path= require('path')
-const initHandlebars=require('./config/handlebar.js')
+const initHandlebars=require('./config/handlebar.js');
+const initDB=require('./config/dataBase.js')
 const router=require('./config/router.js')
 const homePage=require('./controllers/homeController.js')
 
 const app= express();
+app.use(express.urlencoded({extended:true}))
 initHandlebars(app);
-
+initDB();
 // set na papca views da ja tursi v SRC folder:
 // app.set('views', path.resolve('./src/views'));
 //  console.log(path.resolve('./src/views'))
