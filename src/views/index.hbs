@@ -19,8 +19,14 @@
       </ul>
     </header> --}}
     <main>
-      <h1>Browser</h1>
-      <form action="" method="">
+      <h1>
+        {{#if title}}
+        {{title}}
+        {{else}}
+        Browser
+        {{/if}}
+        </h1>
+      <form action="/search" method="GET">
         <input type="text" class="search" name="search" placeholder="Search...">
         <input type="number" name="from" class="difficulty" placeholder="Difficulty from...">
         <span>-</span>
@@ -30,7 +36,8 @@
       {{#each cubes}}
       
       {{> oneCube}}
-
+       {{else}}
+       <p>No results to show</p>
       {{/each}}
       {{!-- <div class="cube">
         <img class="cube" src="https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg">

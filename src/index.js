@@ -6,7 +6,7 @@ const router=require('./config/router.js')
 const homePage=require('./controllers/homeController.js')
 
 const app= express();
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:false}))
 initHandlebars(app);
 initDB();
 // set na papca views da ja tursi v SRC folder:

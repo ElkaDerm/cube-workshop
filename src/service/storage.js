@@ -19,6 +19,16 @@ async function getOneById (id) {
   return oneItem
 }
 
+async function searched (query) {
+
+  const searchedItems= await Cube
+  .find({})
+  .where({name:query.search || ''})
+  .where({difficulty:{$gte:Number(query.from), $lte:Number(query.to) }}) .lean();
+
+  return searchedItems
+}
+
 async function deleteOne (id) {
   await Cube.findByIdAndDelete({_id:id})
 }
@@ -28,4 +38,5 @@ module.exports={
   getAll,
   getOneById,
   deleteOne,
+  searched,
 }
