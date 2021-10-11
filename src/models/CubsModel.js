@@ -10,13 +10,18 @@ const cubicSchema= new mongoose.Schema({
     description:{
         type:String,
         required:true,
+        maxlength:100
     },
     imageUrl:{
         type:String,
+        required:true,
+        validate:/^https?:\/\//i
 
     },
     difficulty:{
         type:Number,
+        min:1,
+        max:6
     }
 });
 

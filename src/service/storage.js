@@ -24,7 +24,8 @@ async function searched (query) {
   const searchedItems= await Cube
   .find({})
   .where({name:query.search || ''})
-  .where({difficulty:{$gte:Number(query.from), $lte:Number(query.to) }}) .lean();
+  .where({difficulty:{$gte:Number(query.from), $lte:Number(query.to) }})
+  .lean();
 
   return searchedItems
 }

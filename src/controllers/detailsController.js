@@ -10,7 +10,12 @@ async function detailsPage (req, res) {
         one:oneItem
     })
 }
+async function deleteCub (req,res) {
+    await storage.deleteOne(req.params.id)
+    res.redirect('/')
+}
 
 router.get('/details/:id',detailsPage)
+router.get('/delete/:id', deleteCub)
 
 module.exports=router
