@@ -1,4 +1,5 @@
 const mongoose= require('mongoose');
+const Schema=mongoose.Schema;
 
 
 const cubicSchema= new mongoose.Schema({
@@ -22,7 +23,13 @@ const cubicSchema= new mongoose.Schema({
         type:Number,
         min:1,
         max:6
-    }
+    },
+    accessories:[
+        {
+            type: Schema.Types.ObjectId,
+            ref:'Accesor'
+        }
+    ],
 });
 
 const Cube=mongoose.model('Cube',cubicSchema)

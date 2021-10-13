@@ -1,5 +1,5 @@
 const Cube=require('../models/CubsModel.js');
-const Accesory=require('../models/AccesoryModel.js')
+const Accesor=require('../models/AccesoryModel.js')
 
 async function getAll() {
   const cubes= await Cube.find({}).lean();
@@ -15,7 +15,7 @@ async function createCub (data) {
 }
 async function getOneById (id) {
 
-  const oneItem = await Cube.findOne({_id:id}).lean();
+  const oneItem = await Cube.findOne({_id:id}).populate('accessories').lean();
   return oneItem
 }
 
@@ -34,10 +34,28 @@ async function deleteOne (id) {
   await Cube.findByIdAndDelete({_id:id})
 }
 
+async function attachAccesor(cubeId,accesorId) {
+
+  let cube= await Cube.findById({_id:cubeId}).lean();
+console.log(cube)
+  let acces= await Accesor.findById({_id:accesorId}).lean();
+console.log(acces)
+  cube.accessories.push(acces)
+}
+
+async function getAllAccesory(cubeId) {
+  let cube= await Cube.findById({_id:cubeId}).populate('accessories').lean();
+  console.log(cube)
+  let allAcces= cube.accessories;
+  console.log(allAcces)
+}
+
 module.exports={
   createCub,
   getAll,
   getOneById,
   deleteOne,
   searched,
+  attachAccesor,
+  getAllAccesory,
 }
