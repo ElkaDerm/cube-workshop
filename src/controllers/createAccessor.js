@@ -5,7 +5,7 @@ const storage=require('../service/storage.js')
 
 
 
- function showAccess (req, res) {
+ function showTemplateAccess (req, res) {
 
     res.render('createAccessory')
 }
@@ -18,30 +18,40 @@ async function createAccess (req,res) {
     res.redirect('/')
 }
 
-async function showAttached (req,res) {
+async function showCubeAccessor (req,res) {
 
     let oneCub= await storage.getOneById(req.params.id);
-
-    let accessory= await accessorService.getAll()
-    // console.log(accessory)
+    let cubeAccessor= await storage.getAllAccesory(req.params.id)
+    let accessoriesArr= await accessorService.getAll()
+    // console.log(cubeAccessor)
+    // console.log(accessoriesArr)
     
     res.render('attachAccessory',{
         cube:oneCub,
-        accessory,
+        cubeAccessor,
+        accessoriesArr,
     })
 }
 
- async function showAccessor(req,res) {
-  let accesId=req.body.accessory
+ async function attachAccessor(req,res) {
+
+     console.log('from createController-----attachAccessor')
+     
+     let accesId=req.body.accessory
+     console.log('this is accessorId')
+  console.log(accesId)
+
+
    let cubId= req.params.id;
+   console.log('this is cubId:')
+   console.log(cubId)
 
    await storage.attachAccesor(cubId, accesId)
-
    res.redirect('/details/'+cubId)
 }
-router.get('/create', showAccess)
+router.get('/create', showTemplateAccess)
 router.post('/create',createAccess)
-router.get('/attach/:id',showAttached)
-router.post('/attach/:id', showAccessor)
+router.get('/add',showCubeAccessor)
+router.post('/add', attachAccessor)
 
 module.exports=router

@@ -35,19 +35,24 @@ async function deleteOne (id) {
 }
 
 async function attachAccesor(cubeId,accesorId) {
-
-  let cube= await Cube.findById({_id:cubeId}).lean();
+  console.log('from storage------attachAccessor')
+  let cube= await Cube.findById(cubeId).lean();
 console.log(cube)
   let acces= await Accesor.findById({_id:accesorId}).lean();
 console.log(acces)
   cube.accessories.push(acces)
+  const newCub= new Cube(cube)
+  console.log (cube.accessories)
+  await newCub.save()
+
+   
 }
 
 async function getAllAccesory(cubeId) {
   let cube= await Cube.findById({_id:cubeId}).populate('accessories').lean();
-  console.log(cube)
-  let allAcces= cube.accessories;
-  console.log(allAcces)
+  // console.log(cube)
+  
+  return cube.accessories
 }
 
 module.exports={
