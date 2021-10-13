@@ -33,11 +33,11 @@ async function showCubeAccessor (req,res) {
     })
 }
 
- async function attachAccessor(req,res) {
+ async function attachAccessory(req,res) {
 
      console.log('from createController-----attachAccessor')
      
-     let accesId=req.body.accessory
+     let accesId=req.body.accessory   //towa idva ot form ot name=accessory{{_id}}
      console.log('this is accessorId')
   console.log(accesId)
 
@@ -52,6 +52,6 @@ async function showCubeAccessor (req,res) {
 router.get('/create', showTemplateAccess)
 router.post('/create',createAccess)
 router.get('/add',showCubeAccessor)
-router.post('/add', attachAccessor)
+router.post('/add', attachAccessory)
 
 module.exports=router

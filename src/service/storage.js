@@ -36,15 +36,15 @@ async function deleteOne (id) {
 
 async function attachAccesor(cubeId,accesorId) {
   console.log('from storage------attachAccessor')
-  let cube= await Cube.findById(cubeId).lean();
+  let cube= await Cube.findById(cubeId);
 console.log(cube)
-  let acces= await Accesor.findById({_id:accesorId}).lean();
-console.log(acces)
-  cube.accessories.push(acces)
-  const newCub= new Cube(cube)
-  console.log (cube.accessories)
-  await newCub.save()
+  let acces= await Accesor.findById(accesorId);
 
+  cube.accessories.push({_id:acces._id})
+  
+  console.log (cube.accessories)
+  
+return cube.save()
    
 }
 
