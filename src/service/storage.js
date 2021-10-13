@@ -39,7 +39,7 @@ async function attachAccesor(cubeId,accesorId) {
   let cube= await Cube.findById(cubeId);
 console.log(cube)
   let acces= await Accesor.findById(accesorId);
-
+ 
   cube.accessories.push({_id:acces._id})
   
   console.log (cube.accessories)
