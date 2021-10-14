@@ -10,10 +10,13 @@ const create = async (data) =>{
 async function getAll () {
   return await Accesor.find({}).lean()
 }
-
+async function getAllWithout(accessoryIds) {
+  return Accesor.find({_id: {$nin:accessoryIds}}).lean()
+}
 
 module.exports={
     create,
     getAll,
+    getAllWithout,
     
 }
