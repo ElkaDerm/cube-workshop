@@ -11,7 +11,7 @@ const notFoundPage=require('../controllers/404controller.js')
 const createAccessor=require('../controllers/createAccessor.js')
 
 router.use( homePage)
-router.use ('/cube',cubicHome)
+router.use (cubicHome)
 router.use(aboutPage)
 router.use( detailsPage);
 router.use('/accessory',createAccessor)

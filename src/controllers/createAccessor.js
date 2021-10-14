@@ -22,14 +22,17 @@ async function showCubeAccessor (req,res) {
 
     let oneCub= await storage.getOneById(req.params.id);
     let cubeAccessor= await storage.getAllAccesory(req.params.id)
-    let accessoriesArr= await accessorService.getAll()
+    // let accessoriesArr= await accessorService.getAll()
     // console.log(cubeAccessor)
     // console.log(accessoriesArr)
+    let tempAccesArr=await storage.cubAllAccesIds(req.params.id)
+    
+    let accessoryArr2= await accessorService.getAllWithout(tempAccesArr)
     
     res.render('attachAccessory',{
         cube:oneCub,
         cubeAccessor,
-        accessoriesArr,
+        accessoryArr2,
     })
 }
 

@@ -9,9 +9,9 @@ const renderCub=(req, res) =>{
     res.render('create')
 }
 
-function createCube (req,res) {
+async function createCube (req,res) {
 //    console.log(req.body);
-   storage.createCub(req.body)
+   await storage.createCub(req.body)
    res.redirect('/create')
 }
 //zaka4wame html za putq'/create:

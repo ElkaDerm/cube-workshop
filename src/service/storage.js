@@ -54,6 +54,11 @@ async function getAllAccesory(cubeId) {
   
   return cube.accessories
 }
+async function cubAllAccesIds (cubId) {
+  let cube= await Cube.findById(cubId).lean()
+  let cubAccesIds= cube.accessories;
+  return cubAccesIds
+}
 
 module.exports={
   createCub,
@@ -63,4 +68,5 @@ module.exports={
   searched,
   attachAccesor,
   getAllAccesory,
+  cubAllAccesIds,
 }
