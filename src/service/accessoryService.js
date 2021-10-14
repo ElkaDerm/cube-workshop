@@ -11,6 +11,7 @@ async function getAll () {
   return await Accesor.find({}).lean()
 }
 async function getAllWithout(accessoryIds) {
+  // return Accessor.find().where('_id').nin(accessoryIds).lean()
   return Accesor.find({_id: {$nin:accessoryIds}}).lean()
 }
 

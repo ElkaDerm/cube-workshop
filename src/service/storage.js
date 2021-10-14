@@ -19,15 +19,21 @@ async function getOneById (id) {
   return oneItem
 }
 
-async function searched (query) {
+async function searched (text, from, to) {
 
-  const searchedItems= await Cube
-  .find({})
-  .where({name:query.search || ''})
-  .where({difficulty:{$gte:Number(query.from), $lte:Number(query.to) }})
-  .lean();
 
-  return searchedItems
+let result= await Cube.find({}).lean()
+if (text) {
+  result=result.filter(x=>x.name.toLowerCase().includes(text.toLowerCase()))
+}
+if (from) {
+ result= result.filter(x=>x.difficulty >=from)
+}
+if (to) {
+  result=result.filter(x=>x.difficulty <= to)
+}
+return result
+
 }
 
 async function deleteOne (id) {

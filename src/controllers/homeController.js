@@ -14,13 +14,14 @@ const storage= require('../service/storage.js')
         }
 
 
-     async function search(req,res) {
+ async function search (req,res) {
+        let {search, from, to}=req.query
 
-         let cubes= await storage.searched(req.query);
+         let cubes= await storage.searched(search,from,to);
          console.log(cubes)
          res.render('index', {
              title:'SEARCH',
-            cubes:cubes
+            cubes
         })
     }
      
