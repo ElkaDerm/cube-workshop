@@ -1,2 +1,2 @@
-# cubic-workshop
-education express app
+# backend-workshop
+
